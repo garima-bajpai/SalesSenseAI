@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+ <a href="{% url 'forecast_app:select_view' %}"><button type="button" class="btn btn-info btn-lg" >Forecast</button></a>
+ 
+
+ <a href="{% url 'analyze_app:sel_type' %}" ><button type="button" class="btn btn-info btn-lg" >Analyze</button></a>
+
+{% endblock %}

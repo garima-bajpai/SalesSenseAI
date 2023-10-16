@@ -1,0 +1,523 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load staticfiles %}
+<div class="row">
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+ <div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+<button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#demo">line</button>
+</div>
+   <div class="panel-body">
+   <div id="demo" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" method="GET" action="{% url 'analyze_app:plot_graph' type='line' %}">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+
+                        <button type="submit" class="btn btn-success">Plot</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+<div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+   <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#bar">Bar</button>
+</div>
+<div class="panel-body">
+<div id="bar" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" method="GET" action="{% url 'analyze_app:plot_graph' type='bar' %}">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+           <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Z:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "z_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Group By:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="group_by" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in cat_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12 ">
+                        <button type="submit" class="btn btn-success">Plot</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+
+ <div class="panel-heading text-center">
+ <div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#scatter">Scatter</button>
+
+       </div>
+<div class="panel-body">
+<div id="scatter" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" method="GET" action="{% url 'analyze_app:plot_graph' type='scatter' %}">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+
+                        <button type="submit" class="btn btn-success">Plot</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+
+
+
+
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+<div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+   <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#histogram">Histogram</button>
+</div>
+<div class="panel-body">
+<div id="histogram" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" method="GET" action="{% url 'analyze_app:plot_graph' type='histogram' %}">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12 ">
+
+                        <button type="submit" class="btn btn-success">Plot</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+    </div>
+
+
+
+
+
+    <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+
+ <div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#distplot">Distplot</button>
+</div>
+<div class="panel-body">
+<div id="distplot" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" method="GET" action="{% url 'analyze_app:plot_graph' type='distplot' %}">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "z_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <button type="submit" class="btn btn-success">Plot</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+
+
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+<div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+   <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#pie">pie</button>
+</div>
+<div class="panel-body">
+<div id="pie" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left" action="{% url 'analyze_app:plot_graph' type='pie' %}" method="GET">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Group By:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="group_by" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in cat_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12 ">
+
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+
+
+ <div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+
+<div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#3D">3D</button>
+</div>
+<div class="panel-body">
+<div id="3D" class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Group By:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="group_by" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+    </div>
+    </div>
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+<div class="panel panel-default">
+<div class="panel-heading text-center">
+<div class="image view view-first">
+         <img src="{% static 'images/4.jpg' %}" alt="img1" style="display: block; width: 100%" >
+
+   <div class="mask">
+   <p>Apple Inc. said it will have another record holiday, fueled by enduring demand for the iPhone.
+       The Cupertino, California-based company said sales in the quarter ending in December will be $75.5 billion to $77.5 billion, topping last year’s record. Chief Executive Officer Tim Cook attributed the forecast to customers upgrading to the latest iPhone models, converts switching over from Android handsets and continued growth in China.</p>
+       </div>
+       </div>
+   <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#histogram2">istogram</button>
+</div>
+<div class="panel-body">
+<div id="histogram2"class="panel-collapse collapse">
+       <form class="form-horizontal form-label-left">
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">X:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="x_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Y:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name = "y_axis" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Group By:</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select name="group_by" class="form-control">
+                          <option value="None">Choose option</option>
+                          {% for name in num_names %}
+                          <option value="{{name}}">{{name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+            </div>
+
+            <div class="form-group">
+                      <div class="col-md-9 col-sm-9 col-xs-12 ">
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+            </div>
+        </form>
+  </div>
+ </div>
+ </div>
+ </div>
+
+
+
+</div>
+
+
+
+{% endblock %}
+

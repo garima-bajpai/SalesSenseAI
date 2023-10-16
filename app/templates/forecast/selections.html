@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if flag %}
+
+     <form method="POST" action="{% url 'forecast_app:target_Sel' %}">
+         {% csrf_token %}
+
+        <div class="row">
+         {% for field in fields %}
+
+          <br><b><input type="checkbox" value="{{field}}" data-toggle="toggle" data-onstyle="info" data-offstyle="danger" data-on="{{field}}" data-off="{{field}}" data-style="" name="choices" ></b>
+          
+        {% endfor %}
+        </div>
+        <div class="ln_solid">
+                    <div class="form-group">
+                 
+                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+
+        </div>
+
+     </form>
+
+
+{% else %}
+        <ul>
+     <form method="POST" action="{% url 'forecast_app:selections_view' %}">
+         {% csrf_token %}
+         {% for field in fields %}
+          <br><b><input type="checkbox"  class="flat" value="{{field}}"name="choices">{{field}}</b>
+         
+        {% endfor %}
+        <div class="ln_solid"></div>
+                    <div class="form-group">
+                 
+                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+     </form>
+
+ </ul>
+{% endif %}
+
+{% endblock %}

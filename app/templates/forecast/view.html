@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ <h1>Predictors</h1>
+{% for predictor in predictors %}
+{{predictor}}
+{% endfor %}
+
+<h1>Target</h1>
+{% for target in targets %}
+{{target}}
+{% endfor %}
+
+<a href="{% url 'forecast_app:forecast' %}">Forecast</a>
+
+{% endblock %}
